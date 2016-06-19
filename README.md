@@ -1,0 +1,2 @@
+# dotfiles
+dotfiles zsh vim
