@@ -30,7 +30,11 @@ set switchbuf=useopen
 " Tabline at top of screen
 set showtabline=1
 set winwidth=79
-set shell=zsh
+if has("win32unix") " Cygwin
+    " set shell=<anything specific>
+else " Other OS
+    " set shell=zsh
+endif
 " Workaround
 " set t_ti= t_te=
 set scrolloff=3
