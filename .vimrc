@@ -33,7 +33,6 @@ set switchbuf=useopen
 " Tabline at top of screen
 set showtabline=1
 set winwidth=79
-set shell=zsh
 
 colorscheme Tomorrow-Night-Eighties
 " let base16colorspace=256 " For base16 colorschemes (needs base16 shell)
@@ -51,6 +50,12 @@ if !empty($ConEmuBuild)
     let &t_AF="\e[38;5;%dm"
     inoremap <Char-0x07F> <BS>
     nnoremap <Char-0x07F> <BS>
+endif
+
+if has("win32unix") " Cygwin
+    " set shell=<anything specific>
+else " Other OS
+    " set shell=zsh
 endif
 " Workaround
 " set t_ti= t_te=
