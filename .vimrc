@@ -8,6 +8,7 @@ Plug 'tpope/vim-sensible'
 Plug 'jnurmine/Zenburn'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'chriskempson/base16-vim'
+Plug 'junegunn/seoul256.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
