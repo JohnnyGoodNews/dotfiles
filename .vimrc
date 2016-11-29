@@ -57,6 +57,17 @@ if has("win32unix") " Cygwin
 else " Other OS
     " set shell=zsh
 endif
+
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Droid\ Sans\ Mono\ nohints:h12:cANSI
+  endif
+endif
+
 " Workaround
 " set t_ti= t_te=
 set scrolloff=3
