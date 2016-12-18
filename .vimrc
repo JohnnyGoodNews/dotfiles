@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 " Status line
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-sensible'
+Plug 'jnurmine/Zenburn'
 
 " Add plugins to &runtimepath
 call plug#end()
