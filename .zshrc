@@ -56,8 +56,12 @@ plugins=(git ssh-agent)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$PATH:$HOME/bin:/usr/local/bin
+export CYGWIN="winsymlinks:nativestrict"
+export JAVA_HOME="/cygdrive/c/Program Files/Java/jdk1.8.0_111"
+export SCALA_HOME="/cygdrive/c/Program Files (x86)/scala"
+export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
+export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/tmux.zsh
