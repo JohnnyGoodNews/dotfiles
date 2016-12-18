@@ -6,6 +6,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-sensible'
 Plug 'jnurmine/Zenburn'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'chriskempson/base16-vim'
+Plug 'junegunn/seoul256.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -31,11 +34,41 @@ set switchbuf=useopen
 " Tabline at top of screen
 set showtabline=1
 set winwidth=79
+
+colorscheme Tomorrow-Night-Eighties
+" let base16colorspace=256 " For base16 colorschemes (needs base16 shell)
+
+" Workaround ConEmu
+" ConEmu fix for 256 colors in Vim
+" and remaps for fixing Windows Vim's weird
+" Backspace behavior
+if !empty($ConEmuBuild)
+    " echom "Running ConEmu settings"
+    set termencoding=utf8
+    set term=xterm
+    set t_Co=256
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+    inoremap <Char-0x07F> <BS>
+    nnoremap <Char-0x07F> <BS>
+endif
+
 if has("win32unix") " Cygwin
     " set shell=<anything specific>
 else " Other OS
     " set shell=zsh
 endif
+
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Droid\ Sans\ Mono\ nohints:h12:cANSI
+  endif
+endif
+
 " Workaround
 " set t_ti= t_te=
 set scrolloff=3
