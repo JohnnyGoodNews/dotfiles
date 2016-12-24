@@ -65,7 +65,8 @@ if has("gui_running")
   elseif has("gui_macvim")
     set guifont=Menlo\ Regular:h14
   elseif has("gui_win32")
-    set guifont=Droid\ Sans\ Mono\ nohints:h12:cANSI
+    " set guifont=Droid\ Sans\ Mono\ nohints:h12:cANSI
+    set guifont=PragmataPro\ Mono:h12:cANSI
   endif
 endif
 
