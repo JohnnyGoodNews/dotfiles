@@ -57,7 +57,7 @@ plugins=(git ssh-agent)
 # User configuration
 
 export PATH=$PATH:$HOME/bin:/usr/local/bin
-export CYGWIN="winsymlinks:nativestrict"
+export CYGWIN="winsymlinks:native"
 export JAVA_HOME="/cygdrive/c/Program Files/Java/jdk1.8.0_111"
 export SCALA_HOME="/cygdrive/c/Program Files (x86)/scala"
 export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
