@@ -43,10 +43,16 @@ set showtabline=1
 set winwidth=79
 set number
 
+set clipboard^=unnamed,unnamedplus
+
 colorscheme Tomorrow-Night-Eighties
 " let base16colorspace=256 " For base16 colorschemes (needs base16 shell)
 set background=light
 colorscheme PaperColor
+
+" space leader
+let mapleader = "\<Space>"
+
 
 " Workaround ConEmu
 " ConEmu fix for 256 colors in Vim
