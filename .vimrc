@@ -5,10 +5,15 @@ call plug#begin('~/.vim/plugged')
 " Status line
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-sensible'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 Plug 'jnurmine/Zenburn'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
+
+Plug 'NLKNguyen/papercolor-theme'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -24,6 +29,8 @@ set softtabstop=4
 set autoindent
 set showmatch
 set incsearch
+set ignorecase
+set smartcase
 set hlsearch
 set laststatus=2
 set encoding=utf-8
@@ -34,9 +41,18 @@ set switchbuf=useopen
 " Tabline at top of screen
 set showtabline=1
 set winwidth=79
+set number
+
+set clipboard^=unnamed,unnamedplus
 
 colorscheme Tomorrow-Night-Eighties
 " let base16colorspace=256 " For base16 colorschemes (needs base16 shell)
+set background=light
+colorscheme PaperColor
+
+" space leader
+let mapleader = "\<Space>"
+
 
 " Workaround ConEmu
 " ConEmu fix for 256 colors in Vim
@@ -105,18 +121,18 @@ augroup END
 " Python Development"
 au BufNewFIle,BufRead *.py
 	\ set tabstop=4
-	\ set softtabstop=4
-	\ set shiftwidth=4
-	\ set textwidth=79
-	\ set expandtab
-	\ set autoindent
-	\ set fileformat=unix
+	\ softtabstop=4
+	\ shiftwidth=4
+	\ textwidth=79
+	\ expandtab
+	\ autoindent
+	\ fileformat=unix
 
 " HTML/CSS
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js,*.html,*.css
 	\ set tabstop=2
-	\ set softtabstop=2
-	\ set shiftwidth=2
+	\ softtabstop=2
+	\ shiftwidth=2
 
 " Flag Unnecessary Whitespace
 au BufNewFile,BufRead *.py, *.pyw, *.c, *.h, *.java match BadWhitespace /\s\+$/
