@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " Make sure you use single quotes
 
@@ -12,15 +12,12 @@ Plug 'tpope/vim-repeat'
 Plug 'Shougo/denite.nvim'
 Plug 'ap/vim-buftabline'
 Plug 'junegunn/vim-peekaboo'
-Plug 'w0rp/ale'
-Plug 'Yggdroot/indentLine'
 
 " Colorschemes
 Plug 'jnurmine/Zenburn'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
-
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'mkarmona/materialbox'
 Plug 'owickstrom/vim-colors-paramount'
@@ -66,33 +63,39 @@ set hlsearch
 set ignorecase
 set smartcase
 set hlsearch
-set ignorecase
-set smartcase
 set laststatus=2
 set encoding=utf-8
 set cursorline
-set number
 " Height of bottom screen
 set cmdheight=1
 set switchbuf=useopen
 " Tabline at top of screen
 set showtabline=1
 set winwidth=79
-set columns=120 
-set lines=35
+set scrolloff=3
+set number
 
 set clipboard^=unnamed,unnamedplus
 set langmenu=en_US.UTF-8    " Sets menu language (gvim)
 set encoding=utf-8
 set termencoding=utf8
 
-" Set colorscheme and options
-set background=light
-colorscheme PaperColor
-let g:lightline = { 'colorscheme': 'PaperColor' }
-set noshowmode
+" Store temporary files
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+" Allow backspacing in Insert Mode
+set backspace=indent,eol,start
+" Display incomplete commands
+set showcmd
+" Syntax highlighting
+syntax on
+" filetype detection
+filetype plugin indent on
+" Emacs-style tab completion
+set wildmode=longest,list
+set wildmenu
 
-" let base16colorspace=256 " For base16 colorschemes (needs base16 shell)
 set background=light
 colorscheme PaperColor
 
@@ -191,37 +194,6 @@ else " Other OS
     " set shell=zsh
 endif
 
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=PragmataPro\ Mono\ 12
-  elseif has("gui_macvim")
-    set guifont=Menlo\ Regular:h14
-  elseif has("gui_win32")
-    " GVIM
-    set guifont=PragmataPro\ Mono:h14:cANSI
-  endif
-endif
-
-" Workaround
-" set t_ti= t_te=
-set scrolloff=3
-" Store temporary files
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" Allow backspacing in Insert Mode
-set backspace=indent,eol,start
-" Display incomplete commands
-set showcmd
-" Syntam highlighting
-syntax on
-" filetype detection
-filetype plugin indent on
-" Emacs-style tab completion
-set wildmode=longest,list
-set wildmenu
-let mapleader=","
-
 " Custom Autocmds
 augroup vimrcEx
     autocmd!
@@ -232,9 +204,7 @@ augroup vimrcEx
         \   exe "normal g`\"" |
         \ endif
 augroup END
-
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=LightRed guibg=LightRed
+   
 
 " Python Development"
 au BufNewFIle,BufRead *.py
@@ -262,5 +232,5 @@ au BufNewFile,BufRead *.js
 	\ shiftwidth=2
 
 " Flag Unnecessary Whitespace
-au BufNewFile,BufRead *.py,*.pyw,*.c,*.h,*.java match BadWhitespace /\s\+$/
+au BufNewFile,BufRead *.py, *.pyw, *.c, *.h, *.java match BadWhitespace /\s\+$/
 
