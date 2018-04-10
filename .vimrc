@@ -5,13 +5,14 @@ call plug#begin('~/.vim/plugged')
 " Status line
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-sensible'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
+Plug 'Yggdroot/indentLine'
 
 Plug 'jnurmine/Zenburn'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'NLKNguyen/papercolor-theme'
 
@@ -32,20 +33,30 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
+set ignorecase
+set smartcase
 set laststatus=2
 set encoding=utf-8
 set cursorline
+set number
 " Height of bottom screen
 set cmdheight=1
 set switchbuf=useopen
 " Tabline at top of screen
 set showtabline=1
 set winwidth=79
-set number
+set columns=120 
+set lines=35
 
-set clipboard^=unnamed,unnamedplus
+" Change working dir to current file
+autocmd BufEnter * silent! lcd %:p:h
 
-colorscheme Tomorrow-Night-Eighties
+" Set colorscheme and options
+set background=light
+colorscheme PaperColor
+let g:lightline = { 'colorscheme': 'PaperColor' }
+set noshowmode
+
 " let base16colorspace=256 " For base16 colorschemes (needs base16 shell)
 set background=light
 colorscheme PaperColor
@@ -77,12 +88,12 @@ endif
 
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 12
+    set guifont=PragmataPro\ Mono\ 12
   elseif has("gui_macvim")
     set guifont=Menlo\ Regular:h14
   elseif has("gui_win32")
-    " set guifont=Droid\ Sans\ Mono\ nohints:h12:cANSI
-    set guifont=PragmataPro\ Mono:h12:cANSI
+    " GVIM
+    set guifont=PragmataPro\ Mono:h14:cANSI
   endif
 endif
 
@@ -116,7 +127,9 @@ augroup vimrcEx
         \   exe "normal g`\"" |
         \ endif
 augroup END
-   
+
+" Use the below highlight group when displaying bad whitespace is desired.
+highlight BadWhitespace ctermbg=LightRed guibg=LightRed
 
 " Python Development"
 au BufNewFIle,BufRead *.py
@@ -135,5 +148,5 @@ au BufNewFile,BufRead *.js,*.html,*.css
 	\ shiftwidth=2
 
 " Flag Unnecessary Whitespace
-au BufNewFile,BufRead *.py, *.pyw, *.c, *.h, *.java match BadWhitespace /\s\+$/
+au BufNewFile,BufRead *.py,*.pyw,*.c,*.h,*.java match BadWhitespace /\s\+$/
 
